@@ -19,7 +19,7 @@
   
 
 
-    $item->getSingleClown($data);
+    $item->getBuddy($data);
 
 
   

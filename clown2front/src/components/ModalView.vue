@@ -7,7 +7,7 @@
 
                     <div class="modal-header">
 
-                        <h1> {{clownId}}
+                        <h1> {{clownPseudo}}
                         </h1>
                     </div>
 
@@ -42,6 +42,9 @@ export default {
     props:{
       clownId:{
           type:String,
+      },
+      clownPseudo :{
+          type:String,
       }
     },
     data: () =>({
@@ -51,6 +54,7 @@ buddy:[],
         let id = this.clownId
         const buddydb = await axios.post(FIND_BUDDY_API_URL,id)
         this.buddy = buddydb.data
+        console.log(this.buddy)
        },
  }
   

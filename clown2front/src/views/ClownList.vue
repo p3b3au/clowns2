@@ -1,6 +1,6 @@
 <template>
     <table class="styled-table">
-        <ModalView v-if="showModal" @close="showModal = false" :clownId='fefe' />
+        <ModalView v-if="showModal" @close="showModal = false" :clownId='clown_id' :clownPseudo='clown_pseudo'/>
 
         <h3 slot="header">custom header</h3>
 
@@ -26,7 +26,7 @@
                 <td class="course-info">{{ isMusician(clown) }}</td>
 
 
-                <td id="show-modal" style="cursor :pointer" @click="showModal = true ; giveId(clown.id)">💬</td>
+                <td id="show-modal" style="cursor :pointer" @click="showModal = true ; giveId(clown.id); givePseudo(clown.pseudo)">💬</td>
                 <!-- <td style="cursor :pointer" @click="goToFilmDelete(movie.id)">🗑</td>-->
             </tr>
         </tbody>
@@ -48,7 +48,8 @@ export default {
     data: () => ({
         showModal: false,
         clowns: [],
-        fefe: ''
+        clown_id: '',
+        clown_pseudo:'',
     }),
 
     methods: {
@@ -75,8 +76,12 @@ export default {
         },
 
         giveId(id) {
-            this.fefe = id
+            this.clown_id = id
+        },
+        givePseudo(pseudo){
+            this.clown_pseudo = pseudo
         }
+
     },
   
 

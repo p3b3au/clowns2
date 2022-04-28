@@ -76,8 +76,6 @@
         // UPDATE
         public function getSingleClown($id)
         {
-          
-
             $stmt = $this->conn->prepare("SELECT
             *
         FROM
@@ -99,8 +97,54 @@
             $this->musicien = $dataRow['musicien'];
             $this->couleur = $dataRow['couleur'];
             $this->pic = $dataRow['pic'];
+            
         }
-    }
+    
+
+        public function getBuddy($id)
+        {  
+            $this->getSingleClown($id);
+             
+            if ($this->sexeHomme == 1) {
+               $sex = 0;
+            }else{
+                $sex=1;
+            };
+            if ($this->musicien == 1) {
+                $mus=0;
+             }else{
+                 $mus=1;
+             };
+
+
+
+            $stmt = $this->conn->prepare("SELECT
+            *
+        FROM
+            $this->db_table
+        WHERE 
+           sexeHomme = :sex and
+            musicien = :mus"    
+        );
+          
+
+            $stmt->execute([
+                ":sex"=>$sex,
+                ":mus"=>$mus,
+            ]);
+
+            $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->id = $dataRow['id'];
+            $this->pseudo = $dataRow['pseudo'];
+            $this->actif = $dataRow['actif'];
+            $this->sexeHomme = $dataRow['sexeHomme'];
+            $this->musicien = $dataRow['musicien'];
+            $this->couleur = $dataRow['couleur'];
+            $this->pic = $dataRow['pic'];
+        }
+    };
+;
+
 
 /*         // UPDATE
         public function updateFilm()
@@ -115,11 +159,11 @@
                     photo = :photo,
                     child = :child,
                     summary = :summary
-                    WHERE 
+                    WHERE
                         id = :id";
-        
+
             $stmt = $this->conn->prepare($sqlQuery);
-        
+
             $this->title=htmlspecialchars(strip_tags($this->title));
             $this->director=htmlspecialchars(strip_tags($this->director));
             $this->year_release=htmlspecialchars(strip_tags($this->year_release));
@@ -129,7 +173,7 @@
             $this->summary=htmlspecialchars(strip_tags($this->summary));
             $this->id=htmlspecialchars(strip_tags($this->id));
 
-        
+
             // bind data
             $stmt->bindParam(':title', $this->title);
             $stmt->bindParam(':director', $this->director);
@@ -139,7 +183,7 @@
             $stmt->bindParam(':child', $this->child);
             $stmt->bindParam(':summary', $this->summary);
             $stmt->bindParam(':id', $this->id);
-        
+
             if ($stmt->execute()) {
                 return true;
             }
@@ -151,11 +195,11 @@
         {
             $sqlQuery = "DELETE FROM $this->db_table WHERE id = ?";
             $stmt = $this->conn->prepare($sqlQuery);
-        
+
             $this->id=htmlspecialchars(strip_tags($this->id));
-        
+
             $stmt->bindParam(1, $this->id);
-        
+
             if ($stmt->execute()) {
                 return true;
             }
@@ -163,4 +207,3 @@
         }
     }
 ?> */
-
