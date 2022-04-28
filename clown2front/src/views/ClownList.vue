@@ -1,6 +1,6 @@
 <template>
     <table class="styled-table">
-        <ModalView v-show="showModal" @close="showModal = false" :clownId='fefe' />
+        <ModalView v-if="showModal" @close="showModal = false" :clownId='fefe' />
 
         <h3 slot="header">custom header</h3>
 
@@ -38,7 +38,7 @@
 import ModalView from '@/components/ModalView.vue'
 import axios from 'axios'
 const ALL_CLOWNS_READ_API_URL = "http://localhost:8787/api/readAllClowns.php"
-// const FIND_BUDDY_API_URL = "http://localhost:8787/api/findBuddy.php"
+
 
 export default {
     name: 'ClownList',
@@ -78,9 +78,7 @@ export default {
             this.fefe = id
         }
     },
-    //   async findYourBuddy(clownId) {
-    //       const buddy = await axios.post(FIND_BUDDY_API_URL,clownId)
-    //  },
+  
 
     /* this.$router.push({ name: 'AdminUpdate', params: { filmId: moviesId } })
  },

@@ -13,13 +13,13 @@
 
                     <div class="modal-body">
                         <slot name="body">
-                            default body
+                            {{buddy.pseudo}}
                         </slot>
                     </div>
 
                     <div class="modal-footer">
                         <slot name="footer">
-                            default footer
+                            TODO trouver le buddy
                             <button class="modal-default-button" @click="$emit('close')">
                                 OK
                             </button>
@@ -34,6 +34,9 @@
 
 </template>
 <script>
+import axios from 'axios'
+const FIND_BUDDY_API_URL = "http://localhost:8787/api/findBuddy.php"
+
 export default {
     name: "ModalView",
     props:{
@@ -42,10 +45,14 @@ export default {
       }
     },
     data: () =>({
-
+buddy:[],
 }),
-
-}
+   async created() {
+        let id = this.clownId
+        const buddydb = await axios.post(FIND_BUDDY_API_URL,id)
+        this.buddy = buddydb.data
+       },
+ }
   
 </script>
 

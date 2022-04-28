@@ -74,29 +74,25 @@
               } */
 
         // UPDATE
-        public function getSingleClown()
+        public function getSingleClown($id)
         {
-            $sqlQuery = "SELECT
-                        id, 
-                        pseudo, 
-                        actif, 
-                        sexeHomme, 
-                        musicien,
-                        couleur,
-                        pic 
-                    FROM
-                        $this->db_table
-                    WHERE 
-                       id = ?";
+          
 
-            $stmt = $this->conn->prepare($sqlQuery);
+            $stmt = $this->conn->prepare("SELECT
+            *
+        FROM
+            $this->db_table
+        WHERE 
+           id = :id");
 
-            $stmt->bindParam(1, $this->id);
+            
 
-            $stmt->execute();
+            $stmt->execute([
+                ":id"=>$id
+            ]);
 
             $dataRow = $stmt->fetch(PDO::FETCH_ASSOC);
-            
+            $this->id = $dataRow['id'];
             $this->pseudo = $dataRow['pseudo'];
             $this->actif = $dataRow['actif'];
             $this->sexeHomme = $dataRow['sexeHomme'];
