@@ -6,9 +6,9 @@
                 <div class="modal-container">
 
                     <div class="modal-header">
-                        <slot name="header">
-                            default header
-                        </slot>
+
+                        <h1> {{clownId}}
+                        </h1>
                     </div>
 
                     <div class="modal-body">
@@ -33,26 +33,24 @@
 
 
 </template>
-<script
-src="https://unpkg.com/vue@2">
-
+<script>
 export default {
-    name: 'ModalView',
-    data: () => {
-         
-        },
+    name: "ModalView",
     props:{
-      
-    }    
-}
+      clownId:{
+          type:String,
+      }
+    },
+    data: () =>({
 
+}),
+
+}
+  
 </script>
 
 <style>
 @import "@/assets/static/css/modal-style.css";
 </style>
 
-    <!-- <script src="https://unpkg.com/vue@2"></script> -->
-   
-    <!-- template for the modal component -->
-    <script type="text/x-template" id="modal-template">
+  
