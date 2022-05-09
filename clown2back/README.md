@@ -9,3 +9,7 @@ This is a step by step PHP 7 & MySQL REST API tutorial, In this tutorial i am go
 * `POST - http://localhost:8888/api/create.php` Create Films
 * `POST - http://localhost:8888/api/update.php` Update Films
 * `DELETE - http://localhost:8888/api/delete.php` Remove Films
+
+
+faire tourner :
+php -S localhost:8787

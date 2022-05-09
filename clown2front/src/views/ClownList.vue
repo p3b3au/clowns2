@@ -18,7 +18,7 @@
         </thead>
         <tbody>
             <tr class="course" v-for="clown in clowns" :key="clown.id" :style="{ backgroundColor: clown.couleur }">
-                <td><img height="80px" :src="require(`@/assets/static/img/${clown.pic}`)" /></td>
+                <td><img class="img" :src="require(`@/assets/static/img/${clown.pic}`)" /></td>
                 <td class="course-info">
                     <h3>{{ clown.pseudo }}</h3>
                 </td>
@@ -109,6 +109,12 @@ export default {
 
 
 <style scoped>
+.img{
+height:50px;
+border-radius: 50px;
+
+}
+
 .styled-table {
     border-collapse: collapse;
     margin: 25px 0;
@@ -155,10 +161,12 @@ export default {
     border-radius: 10px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
     display: flex;
+    align-content: center;
     max-width: 100%;
     margin: 20px;
     overflow: hidden;
-    width: 700px;
+    width: 300px;
+    height: 80px;
 }
 
 .course-preview {
@@ -171,7 +179,7 @@ export default {
 }
 
 .course-info {
-    margin-top: 30px;
+    margin-top: 15px;
     padding: 30px;
     position: relative;
     width: 100%;

@@ -13,13 +13,13 @@
 
                     <div class="modal-body">
                         <slot name="body">
-                            {{buddy.pseudo}}
+                            {{buddy.buddy}}
                         </slot>
                     </div>
 
                     <div class="modal-footer">
                         <slot name="footer">
-                            TODO trouver le buddy
+                            
                             <button class="modal-default-button" @click="$emit('close')">
                                 OK
                             </button>
@@ -35,7 +35,7 @@
 </template>
 <script>
 import axios from 'axios'
-const FIND_BUDDY_API_URL = "http://localhost:8787/api/findBuddy.php"
+const FIND_BUDDY_API_URL = "http://localhost:8787/api/findBuddy2.php"
 
 export default {
     name: "ModalView",
